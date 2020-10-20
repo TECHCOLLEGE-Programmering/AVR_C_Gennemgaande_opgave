@@ -11,9 +11,6 @@
 #include <avr/delay.h>
 #include <avr/interrupt.h>
 
-#ifndef F_CPU
-#define F_CPU 16000000UL // 16 MHz clock speed
-#endif
 #define PORTB_ON(x)				PORTB |= (1 << x)
 #define PORTB_OFF(x)			PORTB &= ~(1 << x)
 #define PORTB_TOGGLE(x)			PORTB ^= (1 << x)
