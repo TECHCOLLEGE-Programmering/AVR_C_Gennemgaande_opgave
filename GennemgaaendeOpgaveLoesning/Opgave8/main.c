@@ -38,23 +38,9 @@ int main(void)
     PCICR |= (1 << PCIE2); // Enable pin change interrupt for PCINT23..16. page 68 datasheet.
 	
 	sei();
-	
+
 	while (1)
     {
 		
     }
 }
-
-/*
-char cSREG;
-cSREG = SREG; /* store SREG value */
-/* disable interrupts during timed sequence */
-_CLI();
-EECR |= (1<<EEMPE); /* start EEPROM write */
-EECR |= (1<<EEPE);
-SREG = cSREG; /* restore SREG value (I-bit) */
-
-__enable_interrupt(); /* set Global Interrupt Enable */
-__sleep(); /* enter sleep, waiting for interrupt */
-/* note: will enter sleep before any pending interrupt(s) */
-*/
