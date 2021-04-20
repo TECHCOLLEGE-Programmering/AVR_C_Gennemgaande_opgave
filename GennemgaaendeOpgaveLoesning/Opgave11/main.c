@@ -7,14 +7,16 @@
  * May be copied and used with source reference.
  */ 
 
-#include <avr/io.h>
-#include <avr/delay.h>
-#include <stdio.h>
-#include <string.h>
-
 #ifndef F_CPU
 #define F_CPU 16000000UL // 16 MHz clock speed
 #endif
+
+#include <avr/io.h>
+#include <util/delay.h>
+#include <stdio.h>
+#include <string.h>
+
+
 
 #define fosc 16000000
 #define baud 115200

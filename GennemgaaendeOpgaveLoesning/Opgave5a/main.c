@@ -9,11 +9,14 @@
 
 #include <avr/io.h>
 
-
 int main(void)
 {
+	DDRB |= 0b11111111;
+	PORTB |= 0b11111111;
+	PINB |= 0b11111111;  
     while (1) 
     {
+		
     }
 }
 

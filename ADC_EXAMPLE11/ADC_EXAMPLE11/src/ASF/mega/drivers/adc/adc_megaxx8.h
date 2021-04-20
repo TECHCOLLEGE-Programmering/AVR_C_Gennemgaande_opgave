@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * \brief megaAVR STK600 GPIO example configuration
+ * \brief ATmegaxx8 family defines
  *
  * Copyright (c) 2014-2018 Microchip Technology Inc. and its subsidiaries.
  *
@@ -33,19 +33,48 @@
 /*
  * Support and FAQ: visit <a href="https://www.microchip.com/support/">Microchip Support</a>
  */
-#ifndef CONF_EXAMPLE_H_INCLUDED
-#define CONF_EXAMPLE_H_INCLUDED
 
-//! \brief Example Pin Change Interrupt vector
-#define EXAMPLE_PCINT_vect PCINT0_vect
+#ifndef _ADC_MEGAXX8_H_
+#define _ADC_MEGAXX8_H_
 
-//! \brief Example Pin Change Interrupt enable register
-#define EXAMPLE_PCICR PCICR
+#define ADC_ADTS_REG     ADCSRB
 
-//! \brief Example Pin Change Interrupt port enable
-#define EXAMPLE_PCIE PCIE0
+enum adc_mux_setting {
+	//! ADC0, single ended
+	ADC_MUX_ADC0 = 0x0,
+	//! ADC1, single ended
+	ADC_MUX_ADC1 = 0x1,
+	//! ADC2, single ended
+	ADC_MUX_ADC2 = 0x2,
+	//! ADC3, single ended
+	ADC_MUX_ADC3 = 0x3,
+	//! ADC4, single ended
+	ADC_MUX_ADC4 = 0x4,
+	//! ADC5, single ended
+	ADC_MUX_ADC5 = 0x5,
+	//! ADC6, single ended
+	ADC_MUX_ADC6 = 0x6,
+	//! ADC7, single ended
+	ADC_MUX_ADC7 = 0x7,
+#if MEGA_XX8_A
+	//! ADC8, single ended. Temperature sensor on megaxx8A/P/PA devices
+	ADC_MUX_TEMPSENSE = 0x8,
+#endif
+	//! 1.1V internal bandgap voltage
+	ADC_MUX_1V1 = 0x0E,
+	//! GND, single ended
+	ADC_MUX_GND = 0x0F,
+};
 
-//! \brief Example Pin Change Interrupt Mask register
-#define EXAMPLE_PCMSK PCMSK0
+enum adc_voltage_reference {
+	//! AREF, internal Vref turned off
+	ADC_VREF_AREF = (0x0 << REFS0),
+	//! AVCC
+	ADC_VREF_AVCC = (0x1  << REFS0),
+	//! Reserved value, not available.
+	ADC_VREF_RESERVED = (0x2  << REFS0),
+	//! Internal 1.1V voltage reference
+	ADC_VREF_1V1 = (0x3  << REFS0),
+};
 
-#endif /* CONF_EXAMPLE_H_INCLUDED */
+#endif  // _ADC_MEGAXX8_H_

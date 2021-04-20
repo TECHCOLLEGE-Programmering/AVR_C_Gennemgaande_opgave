@@ -8,27 +8,28 @@
  * May be copied and used with source reference.
  */
 
+#ifndef F_CPU
+#define F_CPU 16000000UL // 16 MHz clock speed
+#endif
+
 #include <avr/io.h>
 #include <util/delay.h>
 
 /* Project defines */
-#define LED13	5
-#define LED12	4
-#define LED11	3
+#define LED13	PINB5
+#define LED12	PINB4
+#define LED11	PINB3
 
 #define YellowLedValue	(1 << LED13)
 #define GreenLedValue	(1 << LED12)
 #define RedLedValue		(1 << LED11)
 
-#ifndef F_CPU
-#define F_CPU 16000000UL // 16 MHz clock speed
-#endif
 
 /* Sets up the stack pointer.
  * The gcc compiler already does this, but just for educational purposes I included it. 
  */
-#define SPL  _SFR_IO8 (0x3D)
-#define SPH  _SFR_IO8 (0x3E)
+//#define SPL  _SFR_IO8 (0x3D)
+//#define SPH  _SFR_IO8 (0x3E)
 
 /* Defines to get the high an low of 16 bit values*/
 #define low(x)   ((x) & 0xFF)
