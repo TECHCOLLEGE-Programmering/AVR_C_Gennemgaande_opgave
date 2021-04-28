@@ -1,16 +1,21 @@
 /*
- ********************* Status register and EEPROM ******************************
- * Opgave8
- * Created: 13-10-2020 12:49:40
+ ********************* Opgave8 - Interupts ******************************
+ * GennegåendeOpgaveLosning
+ * Created: 26-04-21 15:07:40
  * Author : lkri
  * Created for Atmega168 Datasheet: http://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-9365-Automotive-Microcontrollers-ATmega88-ATmega168_Datasheet.pdf
  * May be copied and used with source reference.
  */ 
 
+#ifndef F_CPU
+#define F_CPU 16000000UL // 16 MHz clock speed
+#endif
+
 #include <avr/io.h>
-#include <avr/delay.h>
+#include <util/delay.h>
 #include <avr/interrupt.h>
 
+/* Project defines */
 #define PORTB_ON(x)				PORTB |= (1 << x)
 #define PORTB_OFF(x)			PORTB &= ~(1 << x)
 #define PORTB_TOGGLE(x)			PORTB ^= (1 << x)
@@ -30,8 +35,8 @@ ISR (PCINT2_vect) {
 
 int main(void)
 {
+	/* Sets up DDR */
 	DDRB |= (1 << DDB5) | (1 << DDB4);
-
 	DDRD &= ~(1 << DDD4);
 	
 	PCMSK2 |= (1 << PCINT20); // Enable pin change interrupt mask for PD4. page 69 datasheet.
